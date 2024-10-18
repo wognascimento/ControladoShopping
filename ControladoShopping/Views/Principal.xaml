@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ControladoShopping.Views.Principal"
+             xmlns:dataGrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:viewmodel="clr-namespace:ControladoShopping.ViewModels"
+             x:DataType="viewmodel:PrincipalViewModel"
+             Loaded="ContentPage_Loaded"
+             Title="Principal">
+
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <dataGrid:SfDataGrid
+            x:Name="dataGrid" 
+            Grid.Row="0"
+            ItemsSource="{Binding VolumeControlados}"
+            CanMaintainScrollPosition="True"/>
+
+        <Grid
+            Grid.Row="1"
+            BackgroundColor="#ffffff"
+            VerticalOptions="End" Padding="10">
+            
+        <Grid.Shadow>
+            <Shadow 
+                Brush="Black"
+                Offset="20,20"
+                Radius="40"
+                Opacity="0.8" />
+        </Grid.Shadow>
+                
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+            <ImageButton
+                x:Name="send1"
+                Source="send_email_svgrepo_com.png"
+                Grid.Column="0"
+                HeightRequest="40" 
+                WidthRequest="40"
+                HorizontalOptions="Start"
+                Command="{Binding SendVolumesCommand}"/>
+
+            <core:SfBusyIndicator 
+                x:Name="busyIndicator"
+                IsRunning = "{Binding IsLoading}" />
+
+            <ImageButton
+                 x:Name="send2"
+                 Source="qrcode_svgrepo_com.png"
+                 Grid.Column="2"
+                 HeightRequest="40" 
+                 WidthRequest="40" 
+                 HorizontalOptions="End"
+                 Command="{Binding ScannerVolumeCommand}"/>
+
+            </Grid>
+            
+        </Grid>
+
+             
+</ContentPage>
