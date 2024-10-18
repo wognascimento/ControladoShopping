@@ -21,7 +21,10 @@
             x:Name="dataGrid" 
             Grid.Row="0"
             ItemsSource="{Binding VolumeControlados}"
-            CanMaintainScrollPosition="True"/>
+            CanMaintainScrollPosition="True"
+            ColumnWidthMode="Auto"
+            AllowEditing="False"
+            CanUseViewFilter="True"/>
 
         <Grid
             Grid.Row="1"
